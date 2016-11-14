@@ -1,5 +1,7 @@
 package com.echoserver;
 
+import org.omg.DynamicAny.DynAnyPackage.InvalidValue;
+
 import java.io.*;
 
 public class EchoServer {
@@ -17,5 +19,17 @@ public class EchoServer {
 
     public String read() throws IOException {
         return input.readLine();
+    }
+
+    public void run() {
+        try {
+            String value = read();
+
+            while (!value.equals("exit")) {
+                write(value);
+                value = read();
+            }
+        } catch (Exception e) {
+        }
     }
 }
