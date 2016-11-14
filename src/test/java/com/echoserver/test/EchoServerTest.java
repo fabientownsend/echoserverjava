@@ -12,7 +12,7 @@ public class EchoServerTest {
 
     @Before
     public void initialize() {
-        final String text = "Hello\nWorld\n";
+        final String text = "Hello\nWorld\nexit\n";
         BufferedReader input = new BufferedReader(new StringReader(text));
 
         out = new StringWriter();
@@ -30,5 +30,11 @@ public class EchoServerTest {
     public void getThePrintedValueInThenEchoServer() throws IOException {
         server.write("Hello");
         assert out.toString().equals("Hello\n");
+    }
+
+    @Test
+    public void existTheEchoServerWhenInputIsExit() throws IOException {
+        server.run();
+        assert out.toString().equals("Hello\nWorld\n");
     }
 }
