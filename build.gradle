@@ -1,5 +1,10 @@
 apply plugin: 'java'
 
+task execute(type: JavaExec) {
+  main = "com.echoserver.Main"
+  classpath = sourceSets.main.runtimeClasspath
+}
+
 repositories {
   mavenCentral()
 }
