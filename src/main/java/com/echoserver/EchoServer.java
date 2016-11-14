@@ -1,7 +1,5 @@
 package com.echoserver;
 
-import org.omg.DynamicAny.DynAnyPackage.InvalidValue;
-
 import java.io.*;
 
 public class EchoServer {
