@@ -1,17 +1,21 @@
 package com.echoserver;
 
+import java.io.*;
+
 public class EchoServer {
-  private final String name;
+    private final BufferedReader input;
+    private final PrintWriter output;
 
-  public EchoServer(String name) {
-    this.name = name;
-  }
+    public EchoServer(BufferedReader input, PrintWriter output) {
+        this.input = input;
+        this.output = output;
+    }
 
-  public String getName() {
-    return this.name;
-  }
+    public void write(String input) {
+        output.println(input);
+    }
 
-  public static void main(String[] args) {
-    System.out.println("Hello world");
-  }
+    public String read() throws IOException {
+        return input.readLine();
+    }
 }
