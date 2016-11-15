@@ -1,31 +1,32 @@
 package com.echoserver.test;
 
 import com.echoserver.EchoServer;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.*;
 
 public class EchoServerTest {
-    private EchoServer server = null;
-    private StringWriter out = null;
+    private EchoServer server;
+    private StringWriter out;
 
     @Test
     public void exitTheEchoServerWithoutOutput() throws IOException {
-        initialiseEcheServerWithInput("exit\n");
+        initialiseEchoServerWithInput("exit\n");
         server.run();
 
-        assert out.toString().equals("");
+        Assert.assertEquals(out.toString(), "");
     }
 
     @Test
     public void displayInputUntilExit() throws IOException {
-        initialiseEcheServerWithInput("Hello\nWorld\nexit\n");
+        initialiseEchoServerWithInput("Hello\nWorld\nexit\n");
         server.run();
 
-        assert out.toString().equals("Hello\nWorld\n");
+        Assert.assertEquals(out.toString(), "Hello\nWorld\n");
     }
 
-    private void initialiseEcheServerWithInput(String text) {
+    private void initialiseEchoServerWithInput(String text) {
         BufferedReader input = new BufferedReader(new StringReader(text));
         out = new StringWriter();
         PrintWriter output = new PrintWriter(out, true);
