@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
 task execute(type: JavaExec) {
   main = "com.echoserver.Main"
@@ -17,4 +18,10 @@ repositories {
 
 dependencies {
   testCompile 'junit:junit:4.11'
+}
+
+jacocoTestReport {
+  reports {
+    xml.enabled true
+  }
 }
