@@ -1,7 +1,7 @@
 package com.echoserver.test;
 
 import com.echoserver.EchoServer;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.io.*;
@@ -15,7 +15,7 @@ public class EchoServerTest {
         initialiseEchoServerWithInput("exit\n");
         server.run();
 
-        Assert.assertEquals(out.toString(), "");
+        assertEquals(out.toString(), "");
     }
 
     @Test
@@ -23,7 +23,7 @@ public class EchoServerTest {
         initialiseEchoServerWithInput("Hello\nWorld\nexit\n");
         server.run();
 
-        Assert.assertEquals(out.toString(), "Hello\nWorld\n");
+        assertEquals(out.toString(), "Hello\nWorld\n");
     }
 
     private void initialiseEchoServerWithInput(String text) {
