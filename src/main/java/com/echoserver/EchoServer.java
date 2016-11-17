@@ -1,17 +1,51 @@
 package com.echoserver;
 
+import java.io.*;
+
 public class EchoServer {
-  private final String name;
+    private final BufferedReader input;
+    private final PrintWriter output;
+    private final String EXIT = "exit";
+    private final String CTRLCMESSAGE = "ctrl handler";
 
-  public EchoServer(String name) {
-    this.name = name;
-  }
+    public EchoServer(BufferedReader input, PrintWriter output) {
+        this.input = input;
+        this.output = output;
+    }
 
-  public String getName() {
-    return this.name;
-  }
+    public void run() {
+        ctrlCHandler();
 
-  public static void main(String[] args) {
-    System.out.println("Hello world");
-  }
+        try {
+            displayInput();
+        } catch (IOException e) {
+            write(e.getMessage());
+        }
+    }
+
+    private void ctrlCHandler() {
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                write(CTRLCMESSAGE);
+            }
+        }));
+    }
+
+    private void displayInput() throws IOException {
+        String value = read();
+
+        while (!value.equals(EXIT)) {
+            write(value);
+            value = read();
+        }
+    }
+
+    private void write(String input) {
+        output.println(input);
+    }
+
+    private String read() throws IOException {
+        return input.readLine();
+    }
 }

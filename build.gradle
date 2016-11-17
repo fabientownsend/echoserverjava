@@ -1,4 +1,16 @@
 apply plugin: 'java'
+apply plugin: 'jacoco'
+
+task execute(type: JavaExec) {
+  main = "com.echoserver.Main"
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+jar {
+  manifest {
+    attributes 'Main-Class': 'com/echoserver/Main'
+  }
+}
 
 repositories {
   mavenCentral()
@@ -6,4 +18,10 @@ repositories {
 
 dependencies {
   testCompile 'junit:junit:4.11'
+}
+
+jacocoTestReport {
+  reports {
+    xml.enabled true
+  }
 }
