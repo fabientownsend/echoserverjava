@@ -6,7 +6,7 @@ public class EchoServer {
     private final BufferedReader input;
     private final PrintWriter output;
     private final String EXIT = "exit";
-    private final String CTRLCMESSAGE = "ctrl handler";
+    private final String CTRLCMESSAGE = "\nOk bye";
 
     public EchoServer(BufferedReader input, PrintWriter output) {
         this.input = input;
