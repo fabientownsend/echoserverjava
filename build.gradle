@@ -1,9 +1,9 @@
+apply plugin: 'java'
+
 plugins {
   id 'jacoco'
   id 'com.github.kt3k.coveralls' version '2.6.3'
 }
-
-apply plugin: 'java'
 
 task execute(type: JavaExec) {
   main = "com.echoserver.Main"
