@@ -4,4 +4,4 @@ jdk:
 - oraclejdk8
 
 after_success:
-    ./gradlew clean test jacocoTestReport coveralls --stacktrace
+  - bash <(curl -s https://codecov.io/bash)
