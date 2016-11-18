@@ -1,5 +1,5 @@
 apply plugin: 'java'
-id 'jacoco'
+apply plugin: 'jacoco'
 
 task execute(type: JavaExec) {
   main = "com.echoserver.Main"
