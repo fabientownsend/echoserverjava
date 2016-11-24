@@ -33,4 +33,25 @@ public class EchoServerTest {
 
         server = new EchoServer(input, output);
     }
+
+    @Test
+    public void itRaiseAnException() throws Exception {
+        BufferedReader input = new FakeBuffered(new StringReader("world"));
+        out = new StringWriter();
+        PrintWriter output = new PrintWriter(out, true);
+        server = new EchoServer(input, output);
+        server.run();
+        assertEquals("Error\n", out.toString());
+    }
+}
+
+final class FakeBuffered extends BufferedReader {
+    FakeBuffered(final Reader reader) {
+        super(reader);
+    }
+
+    @Override
+    public String readLine() throws IOException {
+        throw new IOException();
+    }
 }
